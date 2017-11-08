@@ -255,7 +255,8 @@ module CarrierWave
       end
 
       def full_filename(for_file)
-        [version_name, super(for_file)].compact.join('_')
+        # [version_name, super(for_file)].compact.join('_')
+        [version_name, super(for_file.length > 60 ? "#{for_file[0...60]}#{File.extname(for_file)}" : for_file)].compact.join('_')
       end
 
       def full_original_filename

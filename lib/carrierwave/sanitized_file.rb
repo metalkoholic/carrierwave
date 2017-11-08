@@ -44,7 +44,8 @@ module CarrierWave
     def original_filename
       return @original_filename if @original_filename
       if @file and @file.respond_to?(:original_filename)
-        @file.original_filename
+        # @file.original_filename
+        @file.original_filename.length > 60 ? "#{@file.original_filename[0...60]}#{File.extname(@file.original_filename)}" : @file.original_filename
       elsif path
         File.basename(path)
       end

@@ -81,7 +81,8 @@ module CarrierWave
     private
 
       def full_filename(for_file)
-        for_file
+        # for_file
+        for_file.length > 60 ? "#{for_file[0...60]}#{File.extname(for_file)}" : for_file
       end
 
       def storage
